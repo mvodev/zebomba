@@ -5,7 +5,7 @@ class Friends {
     this.userBoxWidth = 50;
     this.userBoxHeight = 50;
     this.startUserBoxX = 35;
-    this.startUserBoxY = 555;
+    this.startUserBoxY = 565;
     this.unitsOnBar = 8;
     this.gapBetweenBoxes = 10;
     this.userDataIndex = 0;

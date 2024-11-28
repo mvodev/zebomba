@@ -17,6 +17,10 @@ class Rating {
     this.ratingEndScrollAreaY = 465;
     this.barsOnScreen = 7;
     this.barHeight = 25;
+    this.textFont = '14px sans-serif';
+    this.textColor = 'white';
+    this.fiendTextColor = 'red';
+    this.textOffset = 20;
     this.barWidth = 400;
     this.gapBetwenBars = 10;
     this.timerToShowRating = null;
@@ -49,6 +53,7 @@ class Rating {
   showRating() {
     if (this.alreadyDrawn) return;
     const drawRatingWindow = () => {
+      this.alreadyDrawn = true;
       if (this.initialYPositionOfRatingWindow <= this.game.getCanvasHeight()) {
         const speed = 5;
         this.game.getContext().clearRect(
@@ -71,7 +76,6 @@ class Rating {
         this.timerToShowRating = null;
         this.initialYPositionOfRatingWindow = 0;
         this.drawRaitingBars();
-        this.alreadyDrawn = true;
       }
     };
     this.timerToShowRating = setInterval(() => drawRatingWindow(), this.periodOfRedraw);
@@ -114,26 +118,26 @@ class Rating {
         this.barWidth,
         this.barHeight,
       );
-      this.game.getContext().font = '16px sans-serif';
-      this.game.getContext().fillStyle = 'white';
+      this.game.getContext().font = this.textFont;
+      this.game.getContext().fillStyle = this.textColor;
       if (ratingData.friends.findIndex((elem) => elem.id === this.ratingSortedArray[barIndex].id)
         >= 0) {
-        this.game.getContext().fillStyle = 'red';
+        this.game.getContext().fillStyle = this.fiendTextColor;
       }
       this.game.getContext().fillText(
         barIndex + 1,
         this.ratingStartScrollAreaX + this.offsetRatingNumber,
-        this.ratingStartScrollAreaY + offset + this.barHeight * 0.75,
+        this.ratingStartScrollAreaY + offset + this.textOffset,
       );
       this.game.getContext().fillText(
         `${this.ratingSortedArray[barIndex].name} ${this.ratingSortedArray[barIndex].lastName}`,
         this.ratingStartScrollAreaX + this.offsetRatingText,
-        this.ratingStartScrollAreaY + offset + this.barHeight * 0.75,
+        this.ratingStartScrollAreaY + offset + this.textOffset,
       );
       this.game.getContext().fillText(
         this.ratingSortedArray[barIndex].points,
         this.ratingStartScrollAreaX + this.offsetRatingScore,
-        this.ratingStartScrollAreaY + offset + this.barHeight * 0.75,
+        this.ratingStartScrollAreaY + offset + this.textOffset,
       );
       offset += this.gapBetwenBars + this.barHeight;
     }

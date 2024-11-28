@@ -9,12 +9,12 @@ class Player {
     this.height = 69;
     this.step = 0;
     this.transitions = [
-      { x: 434, y: 440 },
-      { x: 340, y: 410 },
-      { x: 265, y: 450 },
-      { x: 180, y: 470 },
-      { x: 100, y: 440 },
-      { x: 112, y: 380 },
+      { x: 440, y: 445 },
+      { x: 345, y: 415 },
+      { x: 270, y: 460 },
+      { x: 180, y: 475 },
+      { x: 105, y: 450 },
+      { x: 115, y: 385 },
     ];
     this.player = document.getElementById('player');
   }
